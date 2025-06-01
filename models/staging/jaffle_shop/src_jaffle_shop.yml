@@ -5,8 +5,18 @@ sources:
     schema: jaffle_shop # dataset
     tables:
       - name: customers
+        columns:
+          - name: id
+            tests:
+              - not_null
+              - unique
       - name: orders
-        freshness: 
+        columns:
+          - name: id
+            tests:
+              - not_null
+              - unique
+        freshness:
           error_after:
             count: 6
             period: hour
@@ -14,4 +24,3 @@ sources:
             count: 24
             period: hour
         loaded_at_field: _etl_loaded_at
-        
